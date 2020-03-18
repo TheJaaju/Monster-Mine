@@ -14,6 +14,7 @@ public class Game extends Canvas implements Runnable {
 	//Instances
 	private Handler handler;
 	private KeyInput input;
+	private MouseInput minput;
 	
 	public Game() {
 		
@@ -29,9 +30,12 @@ public class Game extends Canvas implements Runnable {
 	private void init() {
 		handler = new Handler();
 		input = new KeyInput();
+		minput = new MouseInput(handler);
 		this.addKeyListener(input);
+		this.addMouseListener(minput);
 		
 		handler.addObject(new Player(628, 328, ID.Player, input));
+		minput.findPlayer();
 	}
 	
 	private synchronized void start() {
