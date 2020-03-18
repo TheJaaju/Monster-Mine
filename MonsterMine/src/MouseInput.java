@@ -26,6 +26,15 @@ public class MouseInput extends MouseAdapter{
 		
 		if(tempPlayer != null) {
 			GameObject tempBullet = handler.addObject(new Bullet(tempPlayer.x+16, tempPlayer.y+16, ID.Bullet));
+			
+			
+			float angle = (float) Math.atan2(my - tempPlayer.y, mx - tempPlayer.x);
+			int bulletVel = 15;
+			
+			tempBullet.velX = (float) ((bulletVel) * Math.cos(angle));
+			tempBullet.velY = (float) ((bulletVel) * Math.sin(angle));
+			
+			
 		}else findPlayer();
 	
 	}
